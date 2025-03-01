@@ -1,0 +1,171 @@
+body {
+    background-color: #111827;
+    color: white;
+    
+    font-family: "Sour Gummy", sans-serif;
+  
+    padding: 50px;
+}
+
+
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+p {
+    font-size: 1.2rem;
+    color: #9ca3af;
+}
+
+.navbar {
+    text-align: left;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    display: right;
+    justify-content: space-around;
+}
+
+.navbar li {
+    padding-right: 10px;
+    display: inline;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #3b82f6;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.btn:hover {
+    background-color: #2563eb;
+}
+.projects {
+    margin-top: 20px;
+}
+.project {
+    background: #1f2937;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.about {
+    margin-top: 40px;
+    margin-bottom: 20px; /* Aggiungi spazio sotto la sezione "about" */
+}
+
+.skills {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 20px;
+    text-align: center;
+    background-color: #1f2937;
+    border-radius: 10px;
+}
+
+.skills h2 {
+    margin-bottom: 20px;
+}
+
+.skills ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.skills li {
+    margin-bottom: 10px;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.skill-item {
+    background-color: #1c2736;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    flex: 1 1 calc(40% - 20px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.skill-item img {
+    max-width: 100px;
+    margin-bottom: 10px;
+}
+
+.skill-item p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.certifications {
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+.contacts {
+    margin-top: 40px;
+
+    border-radius: 10px;
+}
+
+.contacts h2 {
+    margin-bottom: 20px;
+}
+
+.contacts p {
+    padding-left: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.contacts a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.contacts a:hover {
+    text-decoration: underline;
+}
+
+.footer {
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    border-radius: 10px;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 14px;
+}
