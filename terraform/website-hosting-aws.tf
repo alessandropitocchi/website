@@ -6,6 +6,11 @@ provider "aws" {
   region = var.aws_region
 }
 
+provider "aws" {
+  alias  = "us-east-1"
+  region = "us-east-1"
+}
+
 resource "aws_s3_bucket" "website_bucket" {
   bucket = "apitocchi.it"
 
@@ -30,6 +35,10 @@ resource "aws_s3_bucket_public_access_block" "website_bucket" {
   restrict_public_buckets = true
 }
 
+resource "aws_cloudfront_origin_access_identity" "website_oai" {
+  comment = "OAI for apitocchi.it"
+}
+
 resource "aws_s3_bucket_policy" "website_bucket_policy" {
   bucket = aws_s3_bucket.website_bucket.id
 
@@ -48,22 +57,61 @@ resource "aws_s3_bucket_policy" "website_bucket_policy" {
   })
 }
 
-resource "aws_s3_object" "index" {
-  bucket       = aws_s3_bucket.website_bucket.id
-  key          = "index.html"
-  source       = "../index.html"
-  content_type = "text/html"
+data "aws_route53_zone" "main" {
+  name = "apitocchi.it."
 }
 
-resource "aws_s3_object" "css" {
-  bucket       = aws_s3_bucket.website_bucket.id
-  key          = "style.css"
-  source       = "../css/style.css"
-  content_type = "text/css"
+resource "aws_route53_record" "website" {
+  zone_id = data.aws_route53_zone.main.zone_id
+  name    = "apitocchi.it"
+  type    = "A"
+
+  alias {
+    name                   = aws_cloudfront_distribution.website_cdn.domain_name
+    zone_id                = aws_cloudfront_distribution.website_cdn.hosted_zone_id
+    evaluate_target_health = false
+  }
 }
 
-resource "aws_cloudfront_origin_access_identity" "website_oai" {
-  comment = "OAI for apitocchi.it"
+resource "aws_acm_certificate" "website_certificate" {
+  provider          = aws.us-east-1
+  domain_name       = "apitocchi.it"
+  validation_method = "DNS"
+  subject_alternative_names = [
+    "www.apitocchi.it"
+  ]
+
+  lifecycle {
+    create_before_destroy = true
+  }
+
+  tags = {
+    Name        = "apitocchi.it"
+    Environment = "Prod"
+  }
+}
+
+resource "aws_route53_record" "cert_validation" {
+  for_each = {
+    for dvo in aws_acm_certificate.website_certificate.domain_validation_options : dvo.domain_name => {
+      name   = dvo.resource_record_name
+      record = dvo.resource_record_value
+      type   = dvo.resource_record_type
+    }
+  }
+
+  zone_id = data.aws_route53_zone.main.zone_id
+  name    = each.value.name
+  type    = each.value.type
+  records = [each.value.record]
+  ttl     = 300
+}
+
+resource "aws_acm_certificate_validation" "cert_validation" {
+  provider                = aws.us-east-1
+  certificate_arn         = aws_acm_certificate.website_certificate.arn
+  validation_record_fqdns = [for record in aws_route53_record.cert_validation : record.fqdn]
+  depends_on              = [aws_route53_record.cert_validation]
 }
 
 resource "aws_cloudfront_distribution" "website_cdn" {
@@ -105,8 +153,6 @@ resource "aws_cloudfront_distribution" "website_cdn" {
     max_ttl                = 86400
   }
 
-  price_class = "PriceClass_100"
-
   restrictions {
     geo_restriction {
       restriction_type = "none"
@@ -117,66 +163,6 @@ resource "aws_cloudfront_distribution" "website_cdn" {
     acm_certificate_arn = aws_acm_certificate.website_certificate.arn
     ssl_support_method  = "sni-only"
   }
-
-  tags = {
-    Name        = "apitocchi.it"
-    Environment = "Prod"
-  }
-}
-
-data "aws_route53_zone" "main" {
-  name = "apitocchi.it."
-}
-
-resource "aws_route53_record" "website" {
-  zone_id = data.aws_route53_zone.main.zone_id
-  name    = "apitocchi.it"
-  type    = "A"
-
-  alias {
-    name                   = aws_cloudfront_distribution.website_cdn.domain_name
-    zone_id                = aws_cloudfront_distribution.website_cdn.hosted_zone_id
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_acm_certificate" "website_certificate" {
-  domain_name       = "apitocchi.it"
-  validation_method = "DNS"
-  subject_alternative_names = [
-    "www.apitocchi.it"
-  ]
-
-  lifecycle {
-    create_before_destroy = true
-  }
-
-  tags = {
-    Name        = "apitocchi.it"
-    Environment = "Prod"
-  }
-}
-
-resource "aws_route53_record" "cert_validation" {
-  for_each = {
-    for dvo in aws_acm_certificate.website_certificate.domain_validation_options : dvo.domain_name => {
-      name   = dvo.resource_record_name
-      record = dvo.resource_record_value
-      type   = dvo.resource_record_type
-    }
-  }
-
-  zone_id = data.aws_route53_zone.main.zone_id
-  name    = each.value.name
-  type    = each.value.type
-  records = [each.value.record]
-  ttl     = 300
-}
-
-resource "aws_acm_certificate_validation" "cert_validation" {
-  certificate_arn         = aws_acm_certificate.website_certificate.arn
-  validation_record_fqdns = [for record in aws_route53_record.cert_validation : record.fqdn]
-  depends_on              = [aws_route53_record.cert_validation]
 }
 
 output "cloudfront_domain_name" {
