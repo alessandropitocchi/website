@@ -2,7 +2,7 @@ body {
     background-color: #111827;
     color: white;
     font-family: "Sour Gummy", sans-serif;
-    padding: 50px;
+    padding: 0px 50px;
     margin: 0;
 }
 
@@ -24,20 +24,17 @@ p {
 }
 
 .navbar {
-    max-width: 98%;
+    max-width: 100%;
     background-color: transparent;
-    padding: 10px;
+    padding: 0px;
     width: 100vw;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .navbar-container {
+    margin-top: 0px;
     display: flex;
     justify-content: right;
     align-items: right;
@@ -139,7 +136,6 @@ p {
     .navbar-toggle .bar {
         height: 3px;
         width: 30px;
-        background-color: #fff;
         margin: 5px 0;
         transition: transform 0.3s ease, opacity 0.3s ease;
     }
