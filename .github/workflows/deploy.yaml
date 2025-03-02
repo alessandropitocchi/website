@@ -16,17 +16,17 @@ jobs:
       - name: Lint HTML files
         run: |
           npm install htmlhint -g
-          htmlhint website/*.html
+          htmlhint *.html
 
       - name: Lint CSS files
         run: |
           npm install csslint -g
-          csslint website/css/*.css
+          csslint css/*.css
 
       - name: Lint js files
         run: |
           npm install eslint -g
-          eslint website/*.js
+          eslint *.js
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
