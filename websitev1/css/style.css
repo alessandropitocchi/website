@@ -24,10 +24,10 @@ p {
 }
 
 .navbar {
-    max-width: 100%;
+    max-width: 98%;
     background-color: transparent;
     padding: 0;
-    width: 100%;
+    width: 98%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -77,16 +77,18 @@ p {
 
 
 /* Media Queries */
-@media (width <= 1350px) {
+/* stylelint-disable-next-line media-feature-range-notation */
+@media (max-width: 1350px) {
     .container {
         max-width: 80%;
         padding-top: 0;
     }
 }
 
-@media (width <= 900px) {
+/* stylelint-disable-next-line media-feature-range-notation */
+@media (max-width: 900px) {
     .container {
-        max-width: 94%;
+        max-width: 90%;
         padding-top: 40px;
     }
 
@@ -104,25 +106,11 @@ p {
     }
 }
 
-@media (width <= 500px) {
+/* stylelint-disable-next-line media-feature-range-notation */
+@media (max-width : 500px) {
     .container {
-        max-width: 94%;
+        max-width: 86%;
     }
-}
-
-/* Button */
-.btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #3b82f6;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.btn:hover {
-    background-color: #2563eb;
 }
 
 /* Projects Section */
