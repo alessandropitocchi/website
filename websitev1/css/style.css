@@ -149,7 +149,7 @@ p {
     margin-bottom: 40px;
     padding: 20px;
     text-align: center;
-    background-color: rgba(31, 41, 55, 0.14);
+    background-color: rgb(31 41 55 / 14%);
     border-radius: 10px;
 }
 
@@ -173,12 +173,12 @@ p {
 }
 
 .skill-item {
-    background-color: rgba(28, 39, 54, 0.44);
+    background: rgb(28 39 54 / 44%);
     border-radius: 10px;
     padding: 20px;
     text-align: center;
     flex: 1 1 calc(40% - 20px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
 }
 
 .skill-item img {
