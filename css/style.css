@@ -2,8 +2,9 @@ body {
     background-color: #e7edef;
     color: black;
     font-family: "Sour Gummy", sans-serif;
-    padding: 0px 50px;
     margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
 
 .container {
@@ -20,31 +21,30 @@ h1 {
 p {
     font-size: 1.2rem;
     color: #777e8a;
-   
 }
 
 .navbar {
     max-width: 100%;
     background-color: transparent;
-    padding: 0px;
-    width: 100vw;
+    padding: 0;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .navbar-container {
-    margin-top: 0px;
+    margin-top: 0;
     display: flex;
-    justify-content: right;
-    align-items: right;
+    justify-content: flex-end;
+    align-items: center;
     width: 100%;
     padding: 0 10px;
 }
 
 .navbar-brand {
-    padding-left: 0px;
-    color: 777e8a;
+    padding-left: 0;
+    color: #777e8a;
     font-size: 20px;
     font-weight: bold;
     text-decoration: none;
@@ -78,16 +78,17 @@ p {
     text-decoration: underline;
 }
 
+/* Media Queries */
 @media (max-width: 1350px) {
-    .container{
-        max-width:80%;
-        padding-top: 0px;
+    .container {
+        max-width: 80%;
+        padding-top: 0;
     }
 }
-@media (max-width: 900px) {
 
+@media (max-width: 900px) {
     .container {
-        max-width: 96%;
+        max-width: 94%;
         padding-top: 40px;
     }
 
@@ -107,13 +108,11 @@ p {
 
 @media (max-width: 500px) {
     .container {
-        max-width: 98%;
+        max-width: 94%;
     }
 }
 
-
-
-
+/* Button */
 .btn {
     display: inline-block;
     margin-top: 20px;
@@ -123,30 +122,36 @@ p {
     text-decoration: none;
     border-radius: 5px;
 }
+
 .btn:hover {
     background-color: #2563eb;
 }
+
+/* Projects Section */
 .projects {
     margin-top: 20px;
 }
+
 .project {
-    background: #1f293724;
+    background: rgba(31, 41, 55, 0.14);
     padding: 20px;
     margin-top: 20px;
     border-radius: 10px;
 }
 
+/* About Section */
 .about {
     margin-top: 40px;
-    margin-bottom: 20px; /* Aggiungi spazio sotto la sezione "about" */
+    margin-bottom: 20px;
 }
 
+/* Skills Section */
 .skills {
     margin-top: 40px;
     margin-bottom: 40px;
     padding: 20px;
     text-align: center;
-    background-color: #1f293724;
+    background-color: rgba(31, 41, 55, 0.14);
     border-radius: 10px;
 }
 
@@ -170,7 +175,7 @@ p {
 }
 
 .skill-item {
-    background-color: #1c273670;
+    background-color: rgba(28, 39, 54, 0.44);
     border-radius: 10px;
     padding: 20px;
     text-align: center;
@@ -190,14 +195,15 @@ p {
     font-weight: bold;
 }
 
+/* Certifications Section */
 .certifications {
     margin-top: 40px;
     margin-bottom: 10px;
 }
 
+/* Contacts Section */
 .contacts {
     margin-top: 40px;
-
     border-radius: 10px;
 }
 
@@ -220,6 +226,7 @@ p {
     text-decoration: underline;
 }
 
+/* Footer */
 .footer {
     margin-top: 40px;
     padding: 20px;
@@ -233,4 +240,3 @@ p {
     margin: 0;
     font-size: 14px;
 }
-
