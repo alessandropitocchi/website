@@ -12,10 +12,10 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "website_bucket" {
-  bucket = "alessandropitocchi.it"
+  bucket = "apitocchi.it"
 
   tags = {
-    Name        = "alessandropitocchi.it"
+    Name        = "apitocchi.it"
     Environment = "Prod"
   }
 }
@@ -36,7 +36,7 @@ resource "aws_s3_bucket_public_access_block" "website_bucket" {
 }
 
 resource "aws_cloudfront_origin_access_identity" "website_oai" {
-  comment = "OAI for alessandropitocchi.it"
+  comment = "OAI for apitocchi.it"
 }
 
 resource "aws_s3_bucket_policy" "website_bucket_policy" {
@@ -58,12 +58,12 @@ resource "aws_s3_bucket_policy" "website_bucket_policy" {
 }
 
 data "aws_route53_zone" "main" {
-  name = "alessandropitocchi.it."
+  name = "apitocchi.it."
 }
 
 resource "aws_route53_record" "website" {
   zone_id = data.aws_route53_zone.main.zone_id
-  name    = "alessandropitocchi.it"
+  name    = "apitocchi.it"
   type    = "A"
 
   alias {
@@ -75,10 +75,10 @@ resource "aws_route53_record" "website" {
 
 resource "aws_acm_certificate" "website_certificate" {
   provider          = aws.us-east-1
-  domain_name       = "alessandropitocchi.it"
+  domain_name       = "apitocchi.it"
   validation_method = "DNS"
   subject_alternative_names = [
-    "www.alessandropitocchi.it"
+    "www.apitocchi.it"
   ]
 
   lifecycle {
@@ -86,7 +86,7 @@ resource "aws_acm_certificate" "website_certificate" {
   }
 
   tags = {
-    Name        = "alessandropitocchi.it"
+    Name        = "apitocchi.it"
     Environment = "Prod"
   }
 }
@@ -126,12 +126,12 @@ resource "aws_cloudfront_distribution" "website_cdn" {
 
   enabled             = true
   is_ipv6_enabled     = false
-  comment             = "CDN for alessandropitocchi.it"
+  comment             = "CDN for apitocchi.it"
   default_root_object = "index.html"
 
   aliases = [
-    "alessandropitocchi.it",
-    "www.alessandropitocchi.it"
+    "apitocchi.it",
+    "www.apitocchi.it"
   ]
 
   default_cache_behavior {
