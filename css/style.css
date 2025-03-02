@@ -85,23 +85,32 @@ p {
     text-decoration: underline;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1350px) {
+    .container{
+        max-width:80%;
+        padding-top: 0px;
+    }
+}
+@media (max-width: 900px) {
 
     .container {
-        max-width: 90%;
-    
+        max-width: 96%;
+        padding-top: 40px;
     }
     .navbar-toggle {
         display: flex;
     }
     .navbar {
-        max-width: 98%;
+        position: fixed;
+        right: 0;
+        top: 10px;
+        max-width: 96%;
     }
 
     .navbar-menu {
         display: none;
         flex-direction: column;
-        width: 50%;
+        width: 80%;
         background-color: #111827;
         position: absolute;
         align-self: center;
