@@ -20,7 +20,7 @@ jobs:
 
       - name: Lint CSS files
         run: |
-          npm install csslint -g
+          npm install -g stylelint
           stylelint websitev1/css/*.css
 
       - name: Run ESLint
