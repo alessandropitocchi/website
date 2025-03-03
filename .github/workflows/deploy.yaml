@@ -26,10 +26,12 @@ jobs:
             "rules": {
               "color-function-notation": "legacy",
               "no-descending-specificity": null,
-              "media-feature-range-notation": "prefix"
+              "media-feature-range-notation": "prefix",
+              "alpha-value-notation": "number"
             }
           }' > stylelint.config.json
           stylelint "websitev1/css/*.css" --config stylelint.config.json
+
 
       - name: Run ESLint
         run: |
