@@ -123,7 +123,8 @@ p {
 .skills {
     margin-top: 40px;
     margin-bottom: 40px;
-    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 40px;
     text-align: center;
     background: rgba(189, 190, 193, 0.15);
     border-radius: 10px;
@@ -137,18 +138,20 @@ p {
 .skills-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 15px; /* Reduced from 20px */
     justify-content: center;
 }
 
 .skill-item {
     background: rgba(180, 182, 186, 0.35);
-    border-radius: 10px;
-    padding: 20px;
+    border-radius: 8px; /* Reduced from 10px */
+    padding: 20px; /* Reduced from 20px */
     text-align: center;
-    flex: 1 1 calc(40% - 20px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(20% - 20px); /* Changed from 40% to 20% for more items per row */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Reduced shadow */
     transition: transform 0.3s ease;
+    min-width: 100px; /* Ensures minimum width */
+    max-width: 150px; /* Limits maximum width */
 }
 
 .skill-item:hover {
@@ -156,14 +159,14 @@ p {
 }
 
 .skill-item img {
-    max-width: 100px;
-    margin-bottom: 10px;
+    max-width: 60px; /* Reduced from 100px */
+    margin-bottom: 8px; /* Reduced from 10px */
 }
 
 .skill-item p {
     margin: 0;
     color: #333;
-    font-size: 16px;
+    font-size: 14px; /* Reduced from 16px */
     font-weight: bold;
 }
 
