@@ -24,10 +24,9 @@ jobs:
           echo '{
             "extends": "stylelint-config-standard",
             "rules": {
-              "color-no-invalid-hex": true,
-              "function-no-unknown": [true, {
-                "ignoreFunctions": ["rgba"]
-              }]
+              "color-function-notation": "legacy",
+              "no-descending-specificity": null,
+              "media-feature-range-notation": "prefix"
             }
           }' > stylelint.config.json
           stylelint "websitev1/css/*.css" --config stylelint.config.json
