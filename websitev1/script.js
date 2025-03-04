@@ -1,43 +1,4 @@
-// CountAPI configuration for visitor counter
-// This is a free service that works with static sites
-
-// Function to increment visitor count using CountAPI
-function incrementVisitorCount() {
-    // Generate a unique namespace for your site
-    const namespace = 'alessandropitocchi.it';
-    const key = 'visits';
-    
-    // First, hit the API to increment the counter
-    countapi.hit(namespace, key).then((result) => {
-        // Update the displayed count
-        document.getElementById('visitor-count').textContent = result.value.toLocaleString();
-    }).catch((error) => {
-        console.error("Error updating visitor count:", error);
-        document.getElementById('visitor-count').textContent = "Error";
-    });
-}
-
 document.addEventListener('DOMContentLoaded', function() {
-    incrementVisitorCount();
-            
-    // Back to top button functionality
-    const backToTopButton = document.querySelector('.back-to-top');
-    
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-            backToTopButton.classList.add('visible');
-        } else {
-            backToTopButton.classList.remove('visible');
-        }
-    });
-    
-    backToTopButton.addEventListener('click', function(e) {
-        e.preventDefault();
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
     const hamburger = document.getElementById('hamburger-menu');
     const navMenu = document.getElementById('navbar-menu');
     
