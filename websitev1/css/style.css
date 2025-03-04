@@ -82,6 +82,24 @@ p {
     transition: all 0.3s ease-in-out;
 }
 
+/* Visitor Counter */
+.visitor-counter {
+    display: inline-block;
+    background-color: rgba(189, 190, 193, 0.3);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #555;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#visitor-count {
+    font-weight: bold;
+    color: #f0ad4e;  /* Same as your in-progress project accent color */
+    font-size: 1.1rem;
+}
+
 /* Projects Section */
 .projects {
     margin-top: 20px;
