@@ -4,8 +4,8 @@
 // Function to increment visitor count using CountAPI
 function incrementVisitorCount() {
     // Generate a unique namespace for your site
-    const namespace = 'pitocchi-portfolio';
-    const key = 'visitors';
+    const namespace = 'alessandropitocchi.it';
+    const key = 'visits';
     
     // First, hit the API to increment the counter
     countapi.hit(namespace, key).then((result) => {

@@ -7,8 +7,12 @@
     <link rel="icon" type="image/png" sizes="16x16" href="img/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="img/favicon_io/site.webmanifest">
     <meta charset="UTF-8">
-    <!-- CountAPI for visitor counter -->
-    <script src="https://cdn.jsdelivr.net/npm/countapi-js@1.0.0/dist/countapi.min.js"></script>
+    <script>
+        function cb(response) {
+            document.getElementById('visits').innerText = response.value;
+        }
+        </script>
+    <script async src="https://api.countapi.xyz/hit/alessandropitocchi.it/visits?callback=cb"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alessandro Pitocchi</title>
     <link rel="stylesheet" href="css/style.css">
